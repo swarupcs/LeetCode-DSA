@@ -76,3 +76,62 @@ class Solution {
 }
 
 ```
+### Approach 2 : Iterative
+```
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+
+/*
+Iterative Approach:
+
+1. Create an ArrayList named inorder;
+2. Create an TreeNode type Stack named stack;
+3. Initialize node as root;
+4. If node is not null then,
+    a. push the node into stack; (stack.push(node);)
+    b. node moves to it's 'left child; (node = node.left;)
+5. Else 
+    a. If stack is empty then
+        break from the loop;
+    b. Otherwise 
+        i) pop the top element from stack and store into node; (node = stack.pop();)
+        ii) add the node value into inorder List; (inorder.add(node.val);)
+        iii) move node to it's right child;
+6. Repeat step 4 and 5; (while(true))
+7. Return inorder
+*/
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> inorder = new ArrayList<Integer>();
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        TreeNode node = root;
+        while(true) {
+            if(node != null) {
+                stack.push(node);
+                node = node.left;
+            } else {
+                if(stack.isEmpty()) {
+                    break;
+                }
+                node = stack.pop();
+                inorder.add(node.val);
+                node = node.right;
+            }
+        }
+        return inorder;
+    }
+}
+```
