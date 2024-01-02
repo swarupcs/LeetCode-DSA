@@ -36,9 +36,11 @@ The number of the nodes in the tree is in the range [0, 100].
 
 ## Solutions
 
+## Java
+
 ### Approach 1 : Recursive
 
-* **Java**
+
 
 ```
 
@@ -76,4 +78,61 @@ class Solution {
     }
 }
 
+```
+
+### Approach 1 : Recursive
+
+```
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode() {}
+ * TreeNode(int val) { this.val = val; }
+ * TreeNode(int val, TreeNode left, TreeNode right) {
+ * this.val = val;
+ * this.left = left;
+ * this.right = right;
+ * }
+ * }
+ */
+
+/*
+ * Iterative Approach:
+ * 
+ * 1. Create a Integer type ArrayList named preorder;
+ * 2. Create a TreeNode type Stack named st;
+ * 3. First push the root of the tree;
+ * 4. pop the root from stack
+ * 5. push the right child of the root(as we use stack so we have to push right
+ * child then left child)
+ * 6. push the left child of the root
+ * 7. Repeat step 4,5,6 until the stack becomes empty
+ */
+class Solution {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> preorder = new ArrayList<Integer>();
+        if (root == null) {
+            return preorder;
+        }
+
+        Stack<TreeNode> st = new Stack<TreeNode>();
+        st.push(root);
+        while (!st.isEmpty()) {
+            root = st.pop();
+            preorder.add(root.val);
+            if (root.right != null) {
+                st.push(root.right);
+            }
+
+            if (root.left != null) {
+                st.push(root.left);
+            }
+        }
+
+        return preorder;
+    }
+}
 ```
