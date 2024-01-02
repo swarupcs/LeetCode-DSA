@@ -1,19 +1,18 @@
-## 136. Single Number
+## 94. Binary Tree Inorder Traversal
 
 
-https://leetcode.com/problems/binary-tree-preorder-traversal/
+https://leetcode.com/problems/binary-tree-inorder-traversal/
 
 
 ```
-Given the root of a binary tree, return the preorder traversal of its nodes' values.
+Given the root of a binary tree, return the inorder traversal of its nodes' values.
 ```
 
 #### Example 1:
 ![Alt text](image.png)
 ```
 Input: root = [1,null,2,3]
-Output: [1,2,3]
-
+Output: [1,3,2]
 ```
 
 #### Example 2:
@@ -36,11 +35,13 @@ The number of nodes in the tree is in the range [0, 100].
 
 ## Solutions
 
-### Approach 1 : Recursive
 
 * **Java**
 
+### Approach 1 : Recursive
+
 ```
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -57,22 +58,21 @@ The number of nodes in the tree is in the range [0, 100].
  * }
  */
 class Solution {
-    public List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> ans = new ArrayList<>();
-        preOrder(root, ans);
-        return ans;
-
-
+    public List<Integer> inorderTraversal(TreeNode root) {
+       List<Integer> ans = new ArrayList<>();
+       inOrder(root, ans);
+       return ans; 
     }
 
-    public static void preOrder(TreeNode root, List<Integer> ans) {
+    public static void inOrder(TreeNode root, List<Integer> ans) {
         if(root == null) {
             return;
         }
 
+        inOrder(root.left, ans);
         ans.add(root.val);
-        preOrder(root.left, ans);
-        preOrder(root.right, ans);
+        inOrder(root.right, ans);  
     }
 }
+
 ```
