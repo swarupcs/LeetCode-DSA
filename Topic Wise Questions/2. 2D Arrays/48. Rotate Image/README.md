@@ -1,7 +1,7 @@
 ## 48. Rotate Image
 
 
-https://leetcode.com/problems/binary-tree-preorder-traversal/
+https://leetcode.com/problems/rotate-image/
 
 
 ```
